@@ -102,7 +102,7 @@ class RNNModel(tf.nn.rnn_cell.RNNCell):
         self.last_phi = None
 
         with tf.variable_scope('rnn', reuse=None):
-            self.lstms = [tf.nn.rnn_cell.LSTMCell(num_units)
+            self.lstms = [tf.contrib.rnn.BasicLSTMCell(num_units)
                           for _ in range(layers)]
             self.states = [tf.Variable(tf.zeros([batch_size, s]), trainable=False)
                            for s in self.state_size]
